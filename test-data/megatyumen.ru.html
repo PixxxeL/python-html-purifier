@@ -1,0 +1,1735 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:og="http://ogp.me/ns#"
+	  xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<meta property="og:locale" content="ru_RU" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="NUjwXmv2mHklGHN8iR8cXqsFhnh6fE29w7EfsYAdV5E" />
+    <meta name='wmail-verification' content='7dfbdd406ebdfc4f' />
+    <meta name="mailru-verification" content="a3feb6574028fd31" />
+    <meta property="og:title" content="Мегатюмень - другие новости, каталог развлечений, отдыха и авто">
+<meta name="title" content="Мегатюмень - другие новости, каталог развлечений, отдыха и авто">
+<meta name="description" content="Новости города и региона, происшествия, события культурной, деловой и спортивной жизни города. Афиша культурных мероприятий. Большой выбор товаров и услуг тюменских компаний. Заказ товаров онлайн.">
+<title>Мегатюмень | Тюменский городской портал</title>
+<meta name="robots" content="noyaca">
+
+	<link rel="shortcut icon" href="http://megatyumen.ru/favicon.ico" />
+
+	<link href="http://megatyumen.ru/public/css/style.css?v=1370939873" type="text/css" rel="stylesheet" />
+	<link href="http://megatyumen.ru/public/css/euro2012.css?v=1370939873" type="text/css" rel="stylesheet" />
+
+	<link href="http://megatyumen.ru/public/css/main.css?v=1370939873" type="text/css" rel="stylesheet" />
+	<link href="http://megatyumen.ru/public/css/informer-vsluh.css?v=1370939873" type="text/css" rel="stylesheet" />
+	<link href="http://megatyumen.ru/public/css/jgrowl.css" type="text/css" rel="stylesheet" />
+
+	<link href="http://megatyumen.ru/public/css/fancybox/jquery.fancybox-1.3.4.css?v=1370939873" type="text/css" rel="stylesheet" />
+	<link href="http://megatyumen.ru/public/css/thickbox/thickbox.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="http://megatyumen.ru/public/css/ui-lightness/jquery-ui-1.8.16.custom.css"  type="text/css" media="screen" charset="utf-8" />
+	<link href="http://megatyumen.ru/public/css/feedback.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>
+	<script type="text/javascript" src="/public/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.carouFredSel.js"></script>
+	<script type="text/javascript" src="/public/js/form2js.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.placeholder.js"></script>
+	<script type="text/javascript" src="/public/js/thickbox-compressed.js"></script>
+	<script type="text/javascript" src="/public/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.ui.datepicker-ru.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.scrollTo-1.4.2-min.js"></script>
+	<script type="text/javascript" src="/public/js/jgrowl.js"></script>
+    <script type="text/javascript" src="/static/js/vendor/swfobject.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendor/underscore.js"></script>
+    <script type="text/javascript" src="/static/js/vendor/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="/static/js/vendor/jquery.qaptcha.js"></script>
+	<link rel="stylesheet" href="http://megatyumen.ru/public/css/ui-base/jquery.ui.all.css" />
+	<style type="text/css">
+		.ui-autocomplete {z-index: 1000!important;}
+	</style>
+
+	<script type="text/javascript">
+		var Qaptcha = function () {
+			$('.qaptcha').QapTcha({
+	            autoSubmit : false,
+	            autoRevert : false,
+	            PHPfile    : '/qaptcha/check',
+	            txtLock    : 'Передвиньте бегунок вправо до упора',
+	            txtUnlock  : 'Отлично!'
+	        });
+		};
+
+		var bannerWrapper = function () {
+	        var params = {
+	                menu: 'false',
+	                scale: 'noScale',
+	                allowFullscreen: 'false',
+	                allowScriptAccess: 'sameDomain',
+	                bgcolor: '#ffffff',
+	                wmode: 'opaque'
+	            },
+	            attributes = {};
+	        $.each($('.flash-banner'), function () {
+	            var container = $(this),
+	                el = container.children('div'),
+	                id = el.attr('id').split('-').pop(),
+	                file = el.attr('data-media-url'),
+	                width = parseInt(el.attr('data-media-width'), 10) || 0,
+	                height = parseInt(el.attr('data-media-height'), 10) || 0,
+	                url = el.attr('data-link'),
+	                flashvars;
+	            //container.css({width: width, height: height, background: 'rgba(0,0,0,.2)'});
+	            flashvars = {
+	                url    : url,
+	                file   : file,
+	                width  : width,
+	                height : height
+	            };
+	            swfobject.embedSWF(
+	                '/static/img/misc/BannerWrapper.swf', 
+	                'flash-banner-' + id, width + 'px', height + 'px', '10.3.0', 
+	                '/static/img/misc/expressInstall.swf', 
+	                flashvars, params, attributes
+	            );
+	        });
+	    };
+
+		$(document).ready(function(){
+			bannerWrapper();
+			$("#gstats").fancybox({
+				'titlePosition' :   'over',
+				'overlayShow'   :   false
+			});
+			$("a.fancy_gallery").fancybox({
+				'titlePosition' :   'over',
+				'overlayShow'   :   false
+			});
+			$('input[placeholder], textarea[placeholder]').placeholder();
+			var cache = {}, lastXhr;
+			$("#search_input_field").autocomplete({
+				minLength: 2,
+				source: function( request, response ) {
+					var term = request.term;
+					if ( term in cache ) {
+						response( cache[ term ] );
+						return;
+					}
+					lastXhr = $.getJSON( "/catalogue/suggest", request, function( data, status, xhr ) {
+						cache[ term ] = data;
+						if ( xhr === lastXhr ) {
+							response( data );
+						}
+					});
+				},
+				select: function( event, ui ) {
+					window.location = MT.domain+"/search?keyword="+ui.item.value;
+				}
+			});
+			$("#date_start").datepicker();
+			Qaptcha();
+		});
+
+		/*function edit_status() {
+			$("#save_status_div").fadeToggle();
+		}
+
+		function save_status() {
+			var status = $("#current_user_status").val();
+			$.post(
+					'/private/index/user_save_status',
+					{ status: status },
+					function(data){
+						$("#save_status_div").hide();
+					},
+					"json"
+			);
+		}*/
+
+		function login() {
+			email = $("#login_email").val();
+			password = $("#login_password").val();
+			remember = $("#login_remember").val();
+			$.post('/user/login',
+					{
+						email: email,
+						password: password,
+						remember: remember
+					},
+					function(data) {
+						if(data.error) {
+							$("#login_error_div").show();
+							$("#login_error_msg").html(data.error_msg);
+						} else {
+							window.location.reload();
+						}
+					},
+					'json'
+			);
+			return false;
+		}
+	</script>
+
+	    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-38888732-1']);
+        _gaq.push(['_setDomainName', 'megatyumen.ru']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        // добавление отслеживания просмотров и кликов тематических товаров
+        $( function () {
+        	// просмотры
+        	$.each( $('.targeting-products .item'), function (index, item) {
+        		_gaq.push([
+        			'_trackEvent', 
+        			'TargetingProducts', // сategory 
+        			'show', // action  
+        			$(this).attr('data-product-id') // opt_label 
+        		]);
+        	});
+        	// переходы
+        	$('.targeting-products .item a.title').click( function (e) {
+        		//e.preventDefault();
+        		_gaq.push([
+        			'_trackEvent', 
+        			'TargetingProducts', // сategory 
+        			'click', // action  
+        			$(this).parents('.item').attr('data-product-id') // opt_label 
+        		]);
+        	});
+        });
+    </script>
+    
+	<script type="text/javascript">
+		var MT = {
+			'current_user':'pixel',
+			'domain':'http://megatyumen.ru'
+		};
+	</script>
+	<script type="text/javascript" src="/public/js/mt/message.js"></script>
+			<meta name='yandex-verification' content='4710d404ce28521e'/>
+<link href="/public/css/carousel.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="/public/js/jquery.countdown.js"></script>
+<script type="text/javascript" src="/public/js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.carouFredSel.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#accordion").accordion();
+        $("a.fancy_gallery").fancybox({
+            titlePosition:'over',
+            overlayShow:false
+        });
+        $("#freebie").carouFredSel({
+            curcular:false,
+            infinite:false,
+            auto:true,
+            pagination:"#freebies"
+        })
+    });
+
+</script>
+					
+	
+	<link href="http://megatyumen.ru/rss" rel="alternate" type="application/rss+xml" title='Портал нашего города "МегаТюмень": свежие новости, обзоры и блоги' />
+</head>
+<body >
+<div class="block-login-fix">
+	<div class="block">
+				<div class="left" style="margin-top: 5px;">
+			<div class="login"><a rel="nofollow" href="http://megatyumen.ru/private">pixel</a></div>
+		</div>
+		<!--<div class="center">
+			<div class="here"><span>Я СЕЙЧАС ТУТ</span></div>
+			<div class="adress">
+				<a rel="nofollow" class="dotted thickbox" href="/private/places/location?TBiframe=true&height=550&width=540&modal=true">
+					<i></i>
+				</a>
+				<div>
+					<a rel="nofollow" class="dotted thickbox" href="/private/places/location?TBiframe=true&height=550&width=540&modal=true">
+						<i></i>
+					</a>
+				</div>
+			</div>
+		</div>-->
+		<img class="age_limit" style="margin-left:10px;" src="/public/i/16+.png?v=2" alt="16+" />
+		<div class="right">
+			<!--<div class="status"><a class="dotted" onclick="edit_status()" href="javascript:void(0)">Статус</a></div>-->
+			<div class="exit"><a href="http://megatyumen.ru/user/logout">Выход</a></div>
+		</div>
+		<!--<div class="status-pop" id="save_status_div" style="display:none;">
+			<div class="text">
+				<textarea id="current_user_status"></textarea>
+			</div>
+			<div class="save"><a class="dotted" onclick="save_status()" href="javascript:void(0)">Сохранить статус</a></div>
+		</div>-->
+			</div>
+</div>
+
+<a href="http://orphus.ru" id="orphus" target="_blank" title="Система Orphus">
+    <img alt="Система Orphus" src="/static/img/orphus.png" />
+</a>
+
+<div class="fon-bg">
+	<div id="wrapper-top">
+		<ul class="old">
+			<!--
+			<li class="pda"><a rel="nofollow" href="http://pda.megatyumen.ru/"><i></i>Мобильная версия</a></li>
+			-->
+			<li class="vk"><a rel="nofollow" target="_blank" href="http://vk.com/portal.megatyumen"><i></i>Вконтакте</a></li>
+			<li class="fb"><a rel="nofollow" target="_blank" href="http://www.facebook.com/home.php?sk=group_128407877219372&ap=1"><i></i>Facebook</a></li>
+			<li class="tw"><a rel="nofollow" target="_blank" href="http://twitter.com/#!/megatyumen"><i></i>Twitter</a></li>
+			<li class="rss"><a rel="nofollow" target="_blank" href="http://megatyumen.ru/rss"><i></i>RSS</a></li>
+		</ul>
+
+                                            <noindex>
+    <div class="flash-banner">
+        <div id="flash-banner-352"
+            data-media-url="/public/assets/banners/1372702082.swf" 
+            data-media-width="1000" 
+            data-media-height="75" 
+            data-link="http://megatyumen.ru/advert/transition/352"></div>
+    </div>
+</noindex>
+
+                    
+		<div id="header">
+
+			<div class="header-t">
+				<a href="http://megatyumen.ru/" class="logo">&nbsp;</a>
+				<div class="search-form">
+					<ul style="display: none;">
+						<li><a href="#">в&nbsp;интересах</a></li>
+						<li><a href="#">по ID</a></li>
+
+						<li><a href="#">по ID</a></li>
+						<li><a href="#">по ID</a></li>
+					</ul>
+					<form action="http://megatyumen.ru/search" method="get">
+						<p>Поиск по порталу</p>
+						<p><input id="search_input_field" type="text" class="frm " name="keyword" placeholder="Например, Мегаполис" />
+							<input type="submit" class="btn" value="Искать" title="Искать" /></p>
+					</form>
+				</div>
+				<div class="block-informer">
+										<div class="weather">
+						<p>погода</p>
+						<div class="block">
+							<div class="img"><img width="27" src="/public/i/ig/images/weather/sunny.gif" /></div>
+							<div class="info">
+								<p>+24°C</p>
+								<span>без осадков, ясно</span>
+							</div>
+						</div>
+						<noindex>
+							<a rel="nofollow" class="copyright" href="http://www.gismeteo.ru">
+								По данным Gismeteo.ru
+							</a>
+						</noindex>
+					</div>
+																							<div class="currency">
+								<p>курсы валют</p>
+								<div class="block">
+									<p><span>USD ЦБ</span> <strong>33,2204</strong> <span class='plus'>+0,2729</span></p>
+									<p><span>EUR ЦБ</span> <strong>43,0736</strong> <span class='plus'>+0,0211</span></p>
+								</div>
+							</div>
+															</div>
+			</div>
+			<ul class="menu">
+				<li class="first active"><a href="http://megatyumen.ru/"><i></i></a></li>
+				<li ><a href="http://news.megatyumen.ru">Новости</a></li>
+				<li ><a href="http://megatyumen.ru/society">Сообщества</a></li>
+				<li ><a href="http://megatyumen.ru/catalogue">Каталог</a></li>
+								<li ><a href="http://megatyumen.ru/market">Товары</a></li>
+				<li ><a href="http://megatyumen.ru/billboard">Афиша</a></li>
+								<li ><a href="http://megatyumen.ru/go?TBiframe=true&amp;modal=true&amp;to=http%3A%2F%2Fissuu.com%2Fmegatyumen" class="thickbox">Киоск</a></li>
+				<li ><a href="http://megatyumen.ru/wedding">Мегасвадьба</a></li>
+				<li ><a href="http://megatyumen.ru/children">Мегадетки</a></li>
+				<li ><a href="http://megatyumen.ru/rest">Мегаотдых</a></li>
+				<li ><a href="http://megatyumen.ru/food">Мегаеда</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+    <div class="banner-out">
+    <div class="out">
+        <div class="block-rest"><p>Отрываюсь...<br />на <a href="http://megatyumen.ru/rest">МегаОтдыхе!</a></p></div>
+    </div>
+</div>
+<div class="webcams-out-container">
+	<div class="webcams-in-container">
+	    <div class="webcams-teaser">
+	        <div class="caption">Веб-камеры Тюмени</div>
+	        <a href="/webcam" class="link">Смотреть</a>
+	    </div>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="content">
+		<div class="block-banner">
+                                                            <div id="top_tabs_1"><noindex>
+    <div class="flash-banner">
+        <div id="flash-banner-306"
+            data-media-url="/public/assets/banners/1365703718.swf" 
+            data-media-width="187" 
+            data-media-height="62" 
+            data-link="http://megatyumen.ru/advert/transition/306"></div>
+    </div>
+</noindex>
+</div>
+                            
+                                                            <div id="top_tabs_2"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/291" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1372097230.gif" height="62" width="187" alt="" title="">
+    </a>
+</noindex>
+</div>
+                            
+                                                            <div id="top_tabs_3"><noindex>
+    <div class="flash-banner">
+        <div id="flash-banner-351"
+            data-media-url="/public/assets/banners/1372788235.swf" 
+            data-media-width="187" 
+            data-media-height="62" 
+            data-link="http://megatyumen.ru/advert/transition/351"></div>
+    </div>
+</noindex>
+</div>
+                            
+                                                            <div id="top_tabs_4"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/301" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1372702258.gif" height="62" width="187" alt="" title="">
+    </a>
+</noindex>
+</div>
+                            
+                                                            <div id="top_tabs_5"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/355" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1372702323.gif" height="62" width="187" alt="" title="">
+    </a>
+</noindex>
+</div>
+                            		</div>
+
+						<div class="block-true">
+			<noindex>
+			<span>Актуально »</span>
+						<a href="http://megatyumen.ru/society/megarest/10730" rel="nofollow">Итоги &quot;Отдых моей мечты&quot;</a>
+			•						<a href="http://megatyumen.ru/society/wedding/10729" rel="nofollow">Итоги &quot;Моменты счастья&quot;</a>
+			•						<a href="http://megatyumen.ru/society/megakids/10720" rel="nofollow">Итоги &quot;Я-водитель!&quot;</a>
+			•						<a href="http://megatyumen.ru/society/wedding/10710" rel="nofollow">Голуби на свадьбу</a>
+			•						<a href="http://megatyumen.ru/society/society/10518" rel="nofollow">Отзыв недели. Итоги</a>
+			•						<a href="http://megatyumen.ru/society/megarest/10514" rel="nofollow">Платные пляжи Тюмени</a>
+			•						<a href="http://megatyumen.ru/society/megarest/10275" rel="nofollow">Итоги &quot;Веселый пикник&quot;</a>
+			•						<a href="http://megatyumen.ru/society/wedding/10273" rel="nofollow">Итоги &quot;Свадебное авто&quot;</a>
+									</noindex>
+		</div>
+						<div class="box nobr" id="index-page">
+    <div class="leftcolum">
+        <div class="basis">
+            <div class="basis-l">
+                                <div class="block-index">
+                    <h2>
+                        Новости Тюмени
+                                            </h2>
+                                        <div class="block">
+	<ul id="index-carousel">
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/crime/9983">
+						<img src="/public/assets/images/info_news/367x209/1372923807391.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/crime/9983">В Нижневартовске мошенники «развели» людей на деньги, прикрывшись громким именем </a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9980">
+						<img src="/public/assets/images/info_news/367x209/1372921206615.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9980">В Исетском районе грузовик протаранил «Ниссан»</a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9977">
+						<img src="/public/assets/images/info_news/367x209/1372917787686.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9977">Виновные в смерти новорожденных в Надыме уже наказаны</a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9966">
+						<img src="/public/assets/images/info_news/367x209/1372912909362.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/society/9966">Новый арт-объект появится на Цветном бульваре в Тюмени</a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/economic/9964">
+						<img src="/public/assets/images/info_news/367x209/13729111022.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/economic/9964">Гендиректор ЗАО «Каскара» уволен по предписанию прокуратуры</a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9961">
+						<img src="/public/assets/images/info_news/367x209/1372906684760.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/society/9961">Погода в Тюмени на 4 июля: возвращается летнее тепло</a></noindex>
+																			</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9958">
+						<img src="/public/assets/images/info_news/367x209/1372850786176.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/society/9958">Тюменским бордюрам делают &quot;пластическую операцию&quot;</a></noindex>
+															                    <span style="display:inline-block;" class="comment"><i class="comment"></i>2</span>
+									</div>
+			</li>
+					<li>
+				<div class="img">
+					<noindex>
+					<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9955">
+						<img src="/public/assets/images/info_news/367x209/1372851930367.jpg" />
+					</a>
+					</noindex>
+				</div>
+				<div class="title">
+					<noindex><a rel="nofollow" href="http://news.megatyumen.ru/news/society/9955">Новые соседи тюменских цыган, возможно, получат «бонусом» дороги и водопровод</a></noindex>
+															                    <span style="display:inline-block;" class="comment"><i class="comment"></i>12</span>
+									</div>
+			</li>
+			</ul>
+	<div class="block-pagination">
+		<div id="index-pagination" class="dotted-pagination"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#index-carousel").carouFredSel({
+		curcular: true,
+		infinite: false,
+		auto: 5000,
+		pagination  : "#index-pagination",
+		scroll: {
+			pauseOnHover: true
+		}
+	});
+</script>
+                                    </div>
+                
+                                <div class="latest-articles">
+                    <h2><a href="http://news.megatyumen.ru/article" class="title_link">Статьи</a></h2>
+                                        <div class="item">
+	<div class="img"><img src="/public/assets/images/info_article/109x64/1372420996470.jpg"></div>
+	<div class="info">
+		<div class="date">
+			<em>1 июля 10:00</em>
+			<!--
+			<span><i class="photo"></i></span>
+			<span><i class="video"></i></span>
+			-->
+					</div>
+		<div class="title">
+			<noindex>
+			<em><a rel="nofollow" href="http://megatyumen.ru/profile/25033">Megatyumen.ru</a> —</em>
+			<a rel="nofollow" href="http://news.megatyumen.ru/article/show/114">Хоронить нельзя кремировать. Крематорию в Тюмени быть?</a>
+			</noindex>
+		</div>
+		<div class="text"></div>
+	</div>
+</div>
+
+                                        <div class="all">[+]
+                        <noindex><a rel="nofollow" href="http://megatyumen.ru/info/article">Все статьи</a></noindex>
+                    </div>
+                </div>
+                                <div class="popular-recipes">
+    		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372068971481.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/beauty/10623">Новинки от Elona Love</a><br/><div class="text">На ул. Широтной, 134, корп. 2 (тел. 673-183) открылся новый салон красоты</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1371724629846.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/auto/10587">Шиномонтажная мастерская «ЯрослАвто+Вулкан» - качество, доказанное временем </a><br/><div class="text">Для правки поврежденных дисков обращайтесь к проверенным мастерам </div></div>		<div class="clear"></div>
+	</div>
+		<div class="all">[+] <a href="http://megatyumen.ru/society/tags/Мегатюмень-полезно">ещё</a></div>
+</div>
+
+                                
+                                    <div class="block-interesting"><h2>
+    <a href="http://megatyumen.ru/society/" class="title_link">Читатели пишут...</a>
+
+    <noindex>
+                <a rel="nofollow" href="http://megatyumen.ru/private/society/post/new/"><i></i>
+            Сообщи новость
+        </a>
+            </noindex>
+
+</h2>
+<div class="block">
+    <div class="title">
+        <span><noindex><a rel="nofollow" href="/society/leisure"><i class="news"></i>Досуг</a></noindex></span>
+        <em>3 июля 15:51</em>
+                            </div>
+    <div class="text">
+        <a href="http://megatyumen.ru/society/leisure/10738">Фестиваль &quot;Танцующая Тюмень под открытым небом&quot;</a>
+    </div>
+</div>
+<div class="block">
+    <div class="title">
+        <span><noindex><a rel="nofollow" href="/society/recreation"><i class="news"></i>Отдых</a></noindex></span>
+        <em>3 июля 10:15</em>
+                            </div>
+    <div class="text">
+        <a href="http://megatyumen.ru/society/recreation/10731">Даже на краю света звонки для абонентов «МегаФона» дешевле в 13 раз</a>
+    </div>
+</div>
+<div class="block">
+    <div class="title">
+        <span><noindex><a rel="nofollow" href="/society/society"><i class="news"></i>Общество</a></noindex></span>
+        <em>2 июля 16:44</em>
+                            </div>
+    <div class="text">
+        <a href="http://megatyumen.ru/society/society/10728">Когда дешевле авиабилеты? </a>
+    </div>
+</div>
+<div class="block">
+    <div class="title">
+        <span><noindex><a rel="nofollow" href="/society/society"><i class="news"></i>Общество</a></noindex></span>
+        <em>2 июля 12:50</em>
+                            </div>
+    <div class="text">
+        <a href="http://megatyumen.ru/society/society/10722">Сайт «МегаФона» покажет абонентам их номер телефона и баланс</a>
+    </div>
+</div>
+<div class="block">
+    <div class="title">
+        <span><noindex><a rel="nofollow" href="/society/society"><i class="news"></i>Общество</a></noindex></span>
+        <em>1 июля 10:28</em>
+                            </div>
+    <div class="text">
+        <a href="http://megatyumen.ru/society/society/10698">Отзыв недели. Детские товары</a>
+    </div>
+</div>
+<div class="all">[+] <noindex><a rel="nofollow" href="http://megatyumen.ru/society/">Все новости</a></noindex></div>
+</div>
+                    <div class="popular-recipes">
+    	<h2>
+		<a href="http://megatyumen.ru/society/megafood" class="title_link">Мегаеда</a>
+	</h2>
+    		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372928477936.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megafood/10749">Чем питаются долгожители разных стран</a><br/><div class="text">Ученые выяснили, что на длительность жизни влияют не только климатические условия, стрессы или генетические особенности, но и, главным образом, питание</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372921579308.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megafood/10744">Шоколад вместо тренировки</a><br/><div class="text">Ежедневное употребление шоколада может значительно снизить кровяное давление</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/13728483375.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megafood/10739">В Тюмени состоится рыбный базар</a><br/><div class="text">Рыбу можно выбрать по своему вкусу, взвесить и отдать на кухню, где ее приготовят на гриле</div></div>		<div class="clear"></div>
+	</div>
+		<div class="all">[+] <a href="http://megatyumen.ru/society/megafood">Все новости</a></div>
+</div>
+
+                    <div class="banner"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/347" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1371146450.gif" height="75" width="367" alt="" title="">
+    </a>
+</noindex>
+</div>
+                    <div class="popular-recipes">
+    	<h2>
+		<a href="http://megatyumen.ru/society/megarest" class="title_link">Мегаотдых</a>
+	</h2>
+    		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372921183475.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megarest/10746"> В Тобольском кремле состоится концерт &quot;Чайковский - гала&quot;</a><br/><div class="text">13 июля 2013 года в 18.00 в рамках проекта «Лето в Тобольском кремле» состоится концерт «Чайковский - гала», посвященный сразу трем знаменательным датам</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372917868614.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megarest/10742">Выбраны самые популярные достопримечательности мира</a><br/><div class="text">Один из крупнейших туристических порталов - Tripadvisor, проанализировав миллионы откликов пользователей сайта, объявил победителей награды &quot;Самые популярные достопримечательности планеты&quot; (2013 Travelers’ Choice Attractions)</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372911551802.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megarest/10740">Тюменцы смогут посмотреть кино под открытым небом</a><br/><div class="text">Интересный фильм, отличная компания и вкусный чай от чайного мастера</div></div>		<div class="clear"></div>
+	</div>
+		<div class="all">[+] <a href="http://megatyumen.ru/society/megarest">Все новости</a></div>
+</div>
+
+                    	<div class="picture-story">
+		<h2><a href="http://megatyumen.ru/society/tags/Мегасвадьба-фоторепортажи+Мегадетки-фоторепортажи+Фоторепортаж+Мегаотдых - Фоторепортажи+Мегаеда - Фоторепортажи" class="title_link">Фоторепортажи</a></h2>
+		<div class="block">
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megarest/10532">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1371473430350.jpg" />
+					<div>
+						<p>Фестиваль «Небо и Земля 2013» попрощался с тюменцам до следующего года</p>
+						<p><span><i></i>44 фото</span></p>					</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megakids/10477">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1371096925591.jpg" />
+					<div>
+						<p>В Тюмени прошла Спартакиада среди детских лагерей с дневным пребыванием Восточного административного округа</p>
+											</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megakids/10474">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1370974098515.jpg" />
+					<div>
+						<p>Дети Ишима и Омутинки получили подарки от благотворителей</p>
+						<p><span><i></i>88 фото</span></p>					</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megakids/10411">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1370526699557.jpg" />
+					<div>
+						<p>Тюменская детская железная дорога открыла сезон</p>
+											</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megarest/10336">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1370257352673.jpg" />
+					<div>
+						<p>Summer Attack Fest в ночном клубе «RIDDLER»</p>
+											</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megakids/10322">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1370182551779.jpg" />
+					<div>
+						<p>В ТРЦ &quot;Па-На-Ма&quot; прошел спектакль &quot;Маленький принц&quot;</p>
+											</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megakids/10319">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1370082592667.jpg" />
+					<div>
+						<p>В День защиты детей детский центр &quot;Пламя&quot; открыл летний сезон лагерей</p>
+											</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megarest/10306">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1369996398957.jpg" />
+					<div>
+						<p>Группа &quot;Просто Горыныч&quot; представила слушателям свой альбом &quot;Сила&quot;</p>
+						<p><span><i></i>116 фото</span></p>					</div>
+				</div>
+			</a>
+			</noindex>
+						<noindex>
+			<a rel="nofollow" href="http://megatyumen.ru/society/megarest/10246">
+				<div class="img">
+					<img src="/public/assets/images/society_post/120x/1369680371388.jpg" />
+					<div>
+						<p>В Тюмени прошел фестиваль национальных культур &quot;Мост дружбы&quot;</p>
+						<p><span><i></i>64 фото</span></p>					</div>
+				</div>
+			</a>
+			</noindex>
+					</div>
+		<div class="all">
+			<noindex>
+				[+]&nbsp;<a rel="nofollow" href="http://megatyumen.ru/society/tags/Мегасвадьба-фоторепортажи+Мегадетки-фоторепортажи+Фоторепортаж+Мегаотдых - Фоторепортажи+Мегаеда - Фоторепортажи">Все фоторепортажи</a>
+			</noindex>
+		</div>
+	</div>
+
+                    <div class="popular-recipes">
+    	<h2>
+		<a href="http://megatyumen.ru/society/wedding" class="title_link">Мегасвадьба</a>
+	</h2>
+    		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372932045742.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/wedding/10752">Алексей Чумаков и Юлия Ковальчук собираются пожениться</a><br/><div class="text">Музыкант Алексей Чумаков сделал ей предложение руки и сердца своей возлюбленной Юлии Ковальчук</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372918561742.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/wedding/10743">За стрельбу на свадьбе придется заплатить 100 000 рублей</a><br/><div class="text">Власти ужесточают наказание за стрельбу в запрещенных для этого местах</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372781635483.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/wedding/10729">Итоги конкурса &quot;Моменты счастья&quot;</a><br/><div class="text">2 июля в 18.00 завершилось голосование в конкурсе &quot;Моменты счастья&quot;</div></div>		<div class="clear"></div>
+	</div>
+		<div class="all">[+] <a href="http://megatyumen.ru/society/wedding">Все новости</a></div>
+</div>
+
+                    <div class="popular-recipes">
+    	<h2>
+		<a href="http://megatyumen.ru/society/megakids" class="title_link">Мегадетки</a>
+	</h2>
+    		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372925470995.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megakids/10748">Как планшеты влияют на детей</a><br/><div class="text">Современные дети растут в окружении современных технологий, они подвержены влиянию современных электронных игрушек, среди которых все чаще и чаще стали появляться планшеты</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372923595951.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megakids/10747">Тюменские школьники окунутся в мир цветов</a><br/><div class="text">В июле ребята, посещающие школьные площадки города, побывают в увлекательном «Путешествии в мир цветов», которое пройдет в Тюменской областной детской научной библиотеке им. К.Я. Лагунова</div></div>		<div class="clear"></div>
+	</div>
+		<div class="item">
+		<div class="photo">
+			<img src="/public/assets/images/society_post/85x/1372843018751.jpg" />
+		</div>
+        <div class="title"><a href="http://megatyumen.ru/society/megakids/10737">Грудное молоко для новорожденного «вегана»</a><span class="comment"><i class="comment"></i>1</span><br/><div class="text">Американская актриса Алисия Сильвестоун создала портал для мам-веганов, которые хотят кормить своих детей грудным молоком без животных жиров</div></div>		<div class="clear"></div>
+	</div>
+		<div class="all">[+] <a href="http://megatyumen.ru/society/megakids">Все новости</a></div>
+</div>
+
+                    <div class="user-rating">
+	<h2>отзывы посетителей
+        	</h2>
+		<div class="item minus">
+		<div class="img">
+			<span></span>
+		</div>
+		<div class="info">
+			<div class="title">
+				<noindex>
+					<a rel="nofollow" href="http://megatyumen.ru/catalogue/company/49118/">Джеймс Батлер, Pub&amp;Show (паб)</a>
+				</noindex>
+			</div>
+			<div class="name">
+				<strong>жена спортсмена</strong>
+				<em>4 июля 11:20</em>
+			</div>
+			<div class="text">
+				Вечер был испорчен через минут 15 после того как мы зашли в заведение, так как мы спустя столько времени так и не дождались официанток..которые между прочим не были заняты(был понедельник) а дружно болтали с барменами. Бармены кстати не удосуживаются...&nbsp;<noindex><a rel="nofollow" title="Читать полностью" href="http://megatyumen.ru/catalogue/company/49118/feedback/">»»</a></noindex>
+			</div>
+		</div>
+	</div>
+		<div class="item plus">
+		<div class="img">
+			<span></span>
+		</div>
+		<div class="info">
+			<div class="title">
+				<noindex>
+					<a rel="nofollow" href="http://stars-bar.megatyumen.ru/">Stars (Старс), караоке диско-бар</a>
+				</noindex>
+			</div>
+			<div class="name">
+				<strong>idddqd</strong>
+				<em>4 июля 01:01</em>
+			</div>
+			<div class="text">
+				Полина Вам бы вообще не помешало бы последить за своим здоровьем, а не торчать ) Тонья что касается Вас сидите дома) паста болоньезе белиссимо ))) за фахитос браво маэстро) на счёт алкоголя тоже пять) хожу часто в караоке всё отлично) очереди в...&nbsp;<noindex><a rel="nofollow" title="Читать полностью" href="http://stars-bar.megatyumen.ru/feedback/">»»</a></noindex>
+			</div>
+		</div>
+	</div>
+		<div class="item plus">
+		<div class="img">
+			<span></span>
+		</div>
+		<div class="info">
+			<div class="title">
+				<noindex>
+					<a rel="nofollow" href="http://megatyumen.ru/catalogue/company/48289/">Аригато, доставка суши</a>
+				</noindex>
+			</div>
+			<div class="name">
+				<strong>Воин Десантник</strong>
+				<em>3 июля 23:53</em>
+			</div>
+			<div class="text">
+				Классная акция у вас сейчас. Раньше заказывал по телефону, но изза акции решил сделать заказ через сайт ( 3 литра пенного напитка на улице не валяются понимаешь ) . Доволен остался не только я, но и мой сын Тимурка. Ему очень нравятся ваши темпурные...&nbsp;<noindex><a rel="nofollow" title="Читать полностью" href="http://megatyumen.ru/catalogue/company/48289/feedback/">»»</a></noindex>
+			</div>
+		</div>
+	</div>
+		<div class="all">
+		<a href="http://megatyumen.ru/feedback/">[+] Все отзывы</a>
+	</div>
+</div>
+                            </div>
+            <div class="basis-r">
+                                    <div class="block-interesting">
+            <div class="block">
+        <div class="title">
+            <span class="rubric">Экономика</span>
+            <em>4 июля 16:10</em>
+                                </div>
+        <div class="text" style="font-style: italic;">
+            <noindex><a  rel="nofollow" href="http://news.megatyumen.ru/news/economic/9984">Россию признали богатой страной</a></noindex>
+            <p>В рейтинге всемирного банка Россия попала в категорию государств с высоким уровнем доходов</p>
+        </div>
+    </div>
+        <div class="block">
+        <div class="title">
+            <span class="rubric">Происшествия, аварии и ДТП</span>
+            <em>4 июля 15:50</em>
+                                </div>
+        <div class="text" style="font-style: italic;">
+            <noindex><a  rel="nofollow" href="http://news.megatyumen.ru/news/happening/9989"> После совместного застолья тюменец угнал машину у приятеля</a></noindex>
+            <p>Хозяин авто, который в это время мирно почивал дома, о незапланированных покатушках не подозревал</p>
+        </div>
+    </div>
+        <div class="block">
+        <div class="title">
+            <span class="rubric">Общество</span>
+            <em>4 июля 15:35</em>
+                                </div>
+        <div class="text" style="font-style: italic;">
+            <noindex><a  rel="nofollow" href="http://news.megatyumen.ru/news/society/9979">Ишимцы могут пристроить старые компьютеры с пользой </a></noindex>
+            <p>В области проходит благотворительная акция «Расширяя горизонты»</p>
+        </div>
+    </div>
+        <div class="block">
+        <div class="title">
+            <span class="rubric">Происшествия, аварии и ДТП</span>
+            <em>4 июля 15:20</em>
+                                </div>
+        <div class="text" style="font-style: italic;">
+            <noindex><a  rel="nofollow" href="http://news.megatyumen.ru/news/happening/9987">В Югре с пятого этажа выпал четырехлетний малыш</a></noindex>
+            <p>Ребенка оставили без присмотра рядом с отрытым окном балкона </p>
+        </div>
+    </div>
+        <div class="all">[+] <a href="http://news.megatyumen.ru/news">Все новости</a></div>
+</div>
+
+                
+                <h1>КОНКУРСЫ</h1>
+<div class="beautiful-couple index-block">
+                        <div class="first-item">
+                <img class="image" src="/media/contest/07/03/34463/110xf/5c79c9eb3372019d34264ced651865f6.jpg" />
+                <div class="info">
+                    <a href="/contest/36">«Отдых на воде»</a>
+                    Приглашаем принять участие в нашем новом конкурсе: «Отдых на воде»
+                </div>
+            </div>
+                                <a href="/contest/35">«Пальчики оближешь!»</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/contest/34">«Моя любимая Тюмень»</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/contest/37">«Свадьба лета»</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+                                <div class="block-freebie">
+                    <div class="block">
+                        <div class="pagination">
+                            <div id="freebies" class="dotted-pagination"></div>
+                        </div>
+                        <span class="img"><img src="/public/img/55x85.gif"/></span>
+                        <span class="text">
+                            <h5>Раздача халявы!</h5>
+                            <ul id="freebie">
+                                                                <li>
+                                    <p><a href="http://megatyumen.ru/society/society/10698">Отзыв недели. Детские товары</a></p>
+                                    <p class="prize"><span>Приз</span> сертификат в салон красоты</p>
+                                </li>
+                                                                <li>
+                                    <p><a href="http://megatyumen.ru/society/megafood/8425">МегаЕда теперь в каждом айфоне </a></p>
+                                    <p class="prize"><span>Приз</span> билет в кино</p>
+                                </li>
+                                                                <li>
+                                    <p><a href="http://megatyumen.ru/society/society/7811">«Нажми на кнопку и получишь результат!»</a></p>
+                                    <p class="prize"><span>Приз</span> билеты в кино</p>
+                                </li>
+                                                            </ul>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="reservation">
+    <link rel="stylesheet" href="http://dev.saas-stoliki.ru/saas-form/css/style.css?v=1370939873">
+        <script type="text/javascript" src="http://dev.saas-stoliki.ru/saas-form/js/script-megatyumen.js?v=1370939873"></script>
+    <div class="saas-form-holder" id="saas-form-holder">
+        <div class="saas-bron-online-txt">Бронируйте столики онлайн!</div>
+        <div class="saas-org-error" id="saas-org-name-error">поле <br />не заполнено</div>
+        <input type="text" id="saas-org-name" class="saas-dummy-text saas-inputs saas-org-name" value="Название заведения" />
+        <div class="saas-lamp" id="saas-lamp"></div>
+    </div>
+</div>
+
+                                <div class="banner"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/7" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1363716061.gif" height="75" width="375" alt="" title="">
+    </a>
+</noindex>
+</div>
+                
+                <div class="wedding-directory">
+                    <div class="title">
+                        <h2><a href="http://megatyumen.ru/catalogue">каталог компаний</a></h2>
+                        <span><em></em></span>
+                    </div>
+                                        <div id="catalogue_accordion" class="accordion">
+			<h3 class="first"><a href="#" class="nolink"><i class="beauty"></i>Красота и здоровье</a> <sup><em>1049</em></sup></h3>
+		<div >
+			<ul>
+									<li><a href="http://azorel.megatyumen.ru/">Азорель, салон красоты</a></li>
+									<li><a href="http://vostorg.megatyumen.ru/">Восторг, спорт-клуб</a></li>
+									<li><a href="http://madonna.megatyumen.ru/">Мадонна, салон-парикмахерская</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/beauty">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="rest"></i>Отдых</a> <sup><em>746</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://poehali.megatyumen.ru/">Поехали, туристическая компания</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/47641/">Агентство семейных путешествий</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/38203/">Боровое, база отдыха</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/rest">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="organization"></i>Услуги организаций</a> <sup><em>1826</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://megatyumen.ru/catalogue/company/48678/">Соня, химчистка</a></li>
+									<li><a href="http://russkyistil.megatyumen.ru/">Русский стиль</a></li>
+									<li><a href="http://agentstvoti-i-ya.megatyumen.ru/">Ты и Я, праздничное агентство</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/organization">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="pets"></i>Питомцы</a> <sup><em>57</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://megatyumen.ru/catalogue/company/43571/">Санта, фелинологический племенной центр</a></li>
+									<li><a href="http://kakadu.megatyumen.ru/">Какаду, зоомагазин</a></li>
+									<li><a href="http://serdce.megatyumen.ru/">Собачье сердце, ветеринарная клиника</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/pets">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="polity"></i>Государство</a> <sup><em>459</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://brak.megatyumen.ru/">Тюменский Дворец бракосочетания (ЗАГС)</a></li>
+									<li><a href="http://fondpredprinimatelstva.megatyumen.ru/">Фонд развития и поддержки предпринимательства Тюменской области</a></li>
+									<li><a href="http://dommasharova.megatyumen.ru/">Дом Машарова, музей</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/polity">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="my_tyumen"></i>Моя Тюмень</a> <sup><em>34</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://muzeizapoved.megatyumen.ru/">Археологический музей-заповедник на оз. Андреевское</a></li>
+									<li><a href="http://sportsquare.megatyumen.ru/">Сквер &quot;Спортивный&quot;</a></li>
+									<li><a href="http://commandoessquare.megatyumen.ru/">Сквер Десантников</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/my_tyumen">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="auto"></i>Авто</a> <sup><em>1173</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://ohotnik.megatyumen.ru/">Охотник, магазин мототехники</a></li>
+									<li><a href="http://evroazia.megatyumen.ru/">Евро-Азия, аккумуляторы</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/48770/">Town Limo, Таун Лимо</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/auto">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="private"></i>Частные услуги</a> <sup><em>131</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://megatyumen.ru/catalogue/company/48457/">Анастасия Еремеева, фотограф</a></li>
+									<li><a href="http://maximus.megatyumen.ru/">Максим Борисов, фотограф</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/47713/">Анна Павлова, фотограф</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/private">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="shopping"></i>Шопинг</a> <sup><em>1925</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://megatyumen.ru/catalogue/company/35941/">Angel (Ангел), магазин кожгалантереи и головных уборов</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/37508/">Амур, свадебный салон</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/38706/">Галоп, магазин товаров для конной амуниции</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/shopping">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="telecom"></i>Интернет, связь, IT-технологии</a> <sup><em>569</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://domru.megatyumen.ru/">Дом.ru, федеральный оператор услуг связи </a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/47006/">Студия интернет-технологий «Креатив»</a></li>
+									<li><a href="http://alfa-k.megatyumen.ru/">Альфа и К, авторизированный сервисный партнер Canon</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/telecom">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="education"></i>Образование и карьера</a> <sup><em>583</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://ymnichka.megatyumen.ru/">Умничка </a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/37311/">АКЦЕНТ, центр профессионального образования</a></li>
+									<li><a href="http://fashionlook.megatyumen.ru/">Fashion Look (Фэшн лук), учебный центр модной индустрии</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/education">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="advertisement"></i>Реклама, полиграфия, СМИ</a> <sup><em>523</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://ladia.megatyumen.ru/">Ладья-СТС, телекомпания</a></li>
+									<li><a href="http://tnt.megatyumen.ru/">23 канал ТНТ, телекомпания</a></li>
+									<li><a href="http://komprawda.megatyumen.ru/">Комсомольская правда-Тюмень, газета</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/advertisement">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="constructing_repair"></i>Строительство и ремонт</a> <sup><em>152</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://gosstroi.megatyumen.ru/">Гос-строй, магазин стротельно-отделочных материалов</a></li>
+									<li><a href="http://korporaciaokon.megatyumen.ru/">Корпорация оконных технологий</a></li>
+									<li><a href="http://virtuoz.megatyumen.ru/">Virtuoz (Виртуоз), дизайн-студия</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/constructing_repair">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="business"></i>Бизнес и финансы</a> <sup><em>507</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://ksps.megatyumen.ru/">КСПС (торговое оборудование)  </a></li>
+									<li><a href="http://rus.megatyumen.ru/">Русь, сельскохозяйственный кредитный потребительский кооператив</a></li>
+									<li><a href="http://megamarketing.megatyumen.ru/">Мегаполис, маркетинговое бюро</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/business">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="home"></i>Дом и дача</a> <sup><em>2098</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://gloria.megatyumen.ru/">Глория, салон штор</a></li>
+									<li><a href="http://frontal.megatyumen.ru/">Фронталь, мебельная фабрика</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/48478/">Виконт, торговая компания</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/home">Все компании</a> →
+			</p>
+		</div>
+			<h3 ><a href="#" class="nolink"><i class="food"></i>Еда</a> <sup><em>562</em></sup></h3>
+		<div style="display:none">
+			<ul>
+									<li><a href="http://megatyumen.ru/catalogue/company/39011/">Дайкоку, ресторан азиатской кухни</a></li>
+									<li><a href="http://megatyumen.ru/catalogue/company/46187/">Хаси-Хаус, суши-бар</a></li>
+									<li><a href="http://assorti.megatyumen.ru/">Ассорти ресторантс, ресторанный холдинг</a></li>
+							</ul>
+			<p>
+				<a href="http://megatyumen.ru/catalogue/food">Все компании</a> →
+			</p>
+		</div>
+	</div>
+<script type="text/javascript">
+	$("#catalogue_accordion").accordion({
+		'autoHeight': false
+	});
+</script>
+
+                                        <div class="banner-catalog">
+                        <p><a href="/media/catalogue/mini_site_promo.ppt">Узнай</a></p>
+                        <p>о преимуществах размещения в каталоге</p>
+                    </div>
+                </div>
+
+
+                <div class="wedding-special">
+                    <h2><a href="http://megatyumen.ru/catalogue/events" class="title_link">Новости компаний</a></h2>
+                                        <div class="block">
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" href="http://teztur.megatyumen.ru/events/5379">Фестиваль критской культуры в Ираклионе (о. Крит)</a>
+                            </noindex>
+                        </p>
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" class="link"
+                                   href="http://teztur.megatyumen.ru/">Tez Tour (Тез Тур), уполномоченное туристическое агентство</a>
+                            </noindex>
+                        </p>
+                    </div>
+                                        <div class="block">
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" href="http://doktorprazdnic.megatyumen.ru/events/5378">Внимание конкурс! «13 поводов пожениться» - для молодоженов 2013 года подарки и скидки!</a>
+                            </noindex>
+                        </p>
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" class="link"
+                                   href="http://doktorprazdnic.megatyumen.ru/">Доктор Праздник, праздничное агентство</a>
+                            </noindex>
+                        </p>
+                    </div>
+                                        <div class="block">
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" href="http://versal.megatyumen.ru/events/5376">День Молодежи - знаменательный и обязательно веселый праздник</a>
+                            </noindex>
+                        </p>
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" class="link"
+                                   href="http://versal.megatyumen.ru/">Версаль, ресторан </a>
+                            </noindex>
+                        </p>
+                    </div>
+                                        <div class="block">
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" href="http://zabugor.megatyumen.ru/events/5375">Хотите в отпуск прямо сейчас? Нет идей, где хотелось бы отдохнуть? Черногория - вот ответ! </a>
+                            </noindex>
+                        </p>
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" class="link"
+                                   href="http://zabugor.megatyumen.ru/">За бугор, туристическая компания</a>
+                            </noindex>
+                        </p>
+                    </div>
+                                        <div class="block">
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" href="http://mirnaladoni.megatyumen.ru/events/5374">Суперцены на путешествие в Грецию!</a>
+                            </noindex>
+                        </p>
+                        <p>
+                            <noindex>
+                                <a rel="nofollow" class="link"
+                                   href="http://mirnaladoni.megatyumen.ru/">Мир на ладони, туристическое агентство</a>
+                            </noindex>
+                        </p>
+                    </div>
+                                        <div class="all">[+]
+                        <noindex><a rel="nofollow" href="http://megatyumen.ru/catalogue/events">Смотреть все</a></noindex>
+                    </div>
+                                        <div class="block-photo">
+	<h2>Фотогалереи</h2>
+	<div class="photo-block">
+				<div>
+			<img src="/public/assets/images/catalogue_company_gallery/111x66/1317036552681.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://bmag.megatyumen.ru/gallery/269">
+				Коммуникативный клуб №15 <br />
+				<span>47 фото</span>
+			</a>
+			</noindex>
+		</div>
+				<div>
+			<img src="/public/assets/images/catalogue_company_gallery/111x66/1348044914293.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://ekshn.megatyumen.ru/gallery/1256">
+				Маникюр салона красоты  &quot;Экшн&quot;<br />
+				<span>18 фото</span>
+			</a>
+			</noindex>
+		</div>
+				<div>
+			<img src="/public/assets/images/catalogue_company_gallery/111x66/1346735585448.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://dantist.megatyumen.ru/gallery/1227">
+				Стоматологическая клиника &quot;Дантист&quot;<br />
+				<span>14 фото</span>
+			</a>
+			</noindex>
+		</div>
+				<div>
+			<img src="/public/assets/images/catalogue_company_gallery/111x66/1344937629131.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://zvenashiy.megatyumen.ru/gallery/1150">
+				 Эксклюзивная мебель от компании &quot;Звенящий кедр&quot;<br />
+				<span>20 фото</span>
+			</a>
+			</noindex>
+		</div>
+				<div>
+			<img src="/public/assets/placeholders/111x66.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://burger.megatyumen.ru/gallery/1566">
+				Кафе-бар &quot;Бюргер&quot;<br />
+				<span>13 фото</span>
+			</a>
+			</noindex>
+		</div>
+				<div>
+			<img src="/public/assets/images/catalogue_company_gallery/111x66/1355990660882.jpg" />
+			<noindex>
+			<a rel="nofollow" href="http://bumerang.megatyumen.ru/gallery/1376">
+				Услуги компании &quot;Бумеранг&quot;<br />
+				<span>20 фото</span>
+			</a>
+			</noindex>
+		</div>
+			</div>
+</div>
+
+                                    </div>
+
+                                <div class="billboard-block">
+	<h2><a href="http://megatyumen.ru/billboard" class="title_link">АФИША</a></h2>
+		<div class="block">
+		<div class="img"><img src="/public/assets/images/billboard_event/85x/1372760958743.jpg"></div>
+		<div class="info">
+			<div class="title">
+				<noindex><a rel="nofollow" href="/billboard/event/2667">Одинокий рейнджер 2D (12+)</a></noindex>
+							</div>
+						<p><em>вестерн, приключения, боевик, комедия</em></p>
+						<p>
+	История блюстителя закона Джона Рейда, который с&nbsp;помощью индейца Тонто стал легендарным мстителем в&nbsp;маске, стоящим на&nbsp;защите справедливости. Тонто с&nbsp;юмором и&nbsp;небылицами повествует о&nbsp;тех приключениях, которые пришлось п...</p>
+		</div>
+	</div>
+		<div class="block">
+		<div class="img"><img src="/public/assets/images/billboard_event/85x/1361786516494.jpg"></div>
+		<div class="info">
+			<div class="title">
+				<noindex><a rel="nofollow" href="/billboard/event/2016">Выставка «О чем молчат деньги?!» (о+)</a></noindex>
+							</div>
+						<p><em>нумизматическая выставка</em></p>
+						<p>
+	Основная цель - обратить внимание не только на историю денег, но и на культурную ценность отдельно взятой монеты или купюры, что предполагает отказ от традиционного &laquo;нумизматического&raquo; показа предметов по хронологическому (века и правите...</p>
+		</div>
+	</div>
+		<div class="block">
+		<div class="img"><img src="/public/assets/images/billboard_event/85x/13727558072.jpg"></div>
+		<div class="info">
+			<div class="title">
+				<noindex><a rel="nofollow" href="/billboard/event/2612">Спектакль  Подыскиваю жену. Недорого!</a></noindex>
+							</div>
+						<p><em>Театр</em></p>
+						<p>
+	Бывает, чтобы человек преуспел в&nbsp;бизнесе и&nbsp;заработал очень много денег? Бывает! А бывает, чтобы он&nbsp;потом решил жениться? Наследника, опять&nbsp;же хочется&hellip; Бывает! Вот и&nbsp;наш герой, Игорь, заработав достаточно денег для бе...</p>
+		</div>
+	</div>
+		<div class="block">
+		<div class="img"><img src="/public/assets/images/billboard_event/85x/1370446821431.jpg"></div>
+		<div class="info">
+			<div class="title">
+				<noindex><a rel="nofollow" href="/billboard/event/2596">Евгений Дятлов (12+)</a></noindex>
+							</div>
+						<p><em>Концерт</em></p>
+						<p>
+	Большинство людей&nbsp;всегда знали&nbsp; Евгения&nbsp;Дятлова как мужественного и&nbsp;харизматичного актера, брутального героя детективных сериалов и&nbsp;боевиков, заботливого и&nbsp;трогательно нежного в&nbsp;мелодрамах. Но&nbsp;талантливый чел...</p>
+		</div>
+	</div>
+		<div class="block">
+		<div class="img"><img src="/public/assets/images/billboard_event/85x/1372307776814.jpg"></div>
+		<div class="info">
+			<div class="title">
+				<noindex><a rel="nofollow" href="/billboard/event/2651">Открытие рок-центра &quot;Белый кот&quot;!  (18+)</a></noindex>
+							</div>
+						<p><em>Вечеринка</em></p>
+						<p>
+	Легендарный рок-центр &quot;Белый кот&quot; возвращается! 6 июля в Тюмени открываем свои двери для музыкантов и зрителей! Только у нас- самые перспективные и талантливые рок-группы, самые драйвовые песни, самые веселые зрители!
+...</p>
+		</div>
+	</div>
+		<div class="link">
+		<span class="first"><noindex><a rel="nofollow" href="http://megatyumen.ru/billboard">сегодня</a>
+		</noindex></span><br/>
+				<span><noindex><a rel="nofollow" href="/billboard/cinema">Кино</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/theatre">Театр</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/club">Вечеринки</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/exhibition">Выставки</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/festival">Фестивали</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/circus">Цирк</a></noindex></span>
+				•
+						<span><noindex><a rel="nofollow" href="/billboard/concert">Концерты</a></noindex></span>
+					</div>
+</div>
+                <div class="banner"></div>
+                            </div>
+        </div>
+    </div>
+    <div class="rightcolum">
+                <div class="banner"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/356" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1372874715.gif" height="305" width="180" alt="" title="">
+    </a>
+</noindex>
+</div>
+        <div class="block-interview">
+	<div class="block">
+		<div class="title"><i></i>Интервью</div>
+		<div class="item">
+			<div class="img"><img src="/public/assets/images/info_interview_hero/128x/1371632597928.jpg"></div>
+			<div class="info">
+				<span class="arrow"></span>
+				<p class="name"><noindex><a href="http://news.megatyumen.ru/interview/show/64" rel="nofollow">Елизавета Гоголь</a></noindex></p>
+				<p class="links"><a href="http://news.megatyumen.ru/interview/show/64">Тюменская школьница наколола на спине портрет Гоголя</a></p>
+				<p><q><span>Тюменка рассказала «Мегатюмени» о том, почему она решила вытатуировать изображение известного русского писателя на собственном теле</span></q></p>
+			</div>
+		</div>
+	</div>
+	<div class="all">[+] <a href="http://news.megatyumen.ru/interview">Все интервью</a></div>
+</div>
+
+        <div class="popular-articles">
+	<h2>топ новостей</h2>
+
+	<div class="block">
+				<div class="item clearfix first">
+			<span class="rank"><i></i>1</span>
+
+			<div class="img">
+								<img src="/public/assets/images/info_news/175x100/1372851930367.jpg"/>
+							</div>
+
+			<div class="links">
+			<noindex>
+				<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9955">Новые соседи тюменских цыган, возможно, получат «бонусом» дороги и водопровод</a>
+			</noindex>
+			</div>
+			<div class="info">
+				<div class="view">
+					<i></i> 365 просмотров
+				</div>
+				<div class="comments">
+					<noindex>
+						<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9955#comments">
+							<i></i> 12 комментариев
+						</a>
+					</noindex>
+				</div>
+			</div>
+		</div>
+				<div class="item clearfix ">
+			<span class="rank"><i></i>2</span>
+
+			<div class="img">
+								<img src="/public/assets/images/info_news/66x66/137285100712.jpg"/>
+							</div>
+
+			<div class="links">
+			<noindex>
+				<a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9959">На тюменском ж/д вокзале пьяная пассажирка с ребенком на руках забралась под поезд </a>
+			</noindex>
+			</div>
+			<div class="info">
+				<div class="view">
+					<i></i> 321 просмотр
+				</div>
+				<div class="comments">
+					<noindex>
+						<a rel="nofollow" href="http://news.megatyumen.ru/news/happening/9959#comments">
+							<i></i> 0 комментариев
+						</a>
+					</noindex>
+				</div>
+			</div>
+		</div>
+				<div class="item clearfix last">
+			<span class="rank"><i></i>3</span>
+
+			<div class="img">
+								<img src="/public/assets/images/info_news/66x66/1372850786176.jpg"/>
+							</div>
+
+			<div class="links">
+			<noindex>
+				<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9958">Тюменским бордюрам делают &quot;пластическую операцию&quot;</a>
+			</noindex>
+			</div>
+			<div class="info">
+				<div class="view">
+					<i></i> 252 просмотра
+				</div>
+				<div class="comments">
+					<noindex>
+						<a rel="nofollow" href="http://news.megatyumen.ru/news/society/9958#comments">
+							<i></i> 2 комментария
+						</a>
+					</noindex>
+				</div>
+			</div>
+		</div>
+			</div>
+</div>
+
+        <div class="block-columnist">
+    <h2>Колумнисты</h2>
+        <div class="item">
+        <div class="img"><img src="/public/assets/images/user_avatar/37x40/13652185708550.jpg" />
+    </div>
+    <div class="info">
+        <p class="name">
+            <noindex><a rel="nofollow" href="http://megatyumen.ru/society/columnists/9783">Shadrapa</a></noindex>
+        </p>
+        <p class="links">
+			<noindex><a rel="nofollow" href="http://megatyumen.ru/society/columnists/9783">Городская среда Тюмени</a></noindex>
+        </p>
+    </div>
+    </div>
+        <div class="all">[+] <a href="http://megatyumen.ru/society/columnists/">Все записи</a></div>
+</div>
+
+        <div class="banner"><noindex>
+    <a href="http://megatyumen.ru/advert/transition/224" target="_blank" rel="nofollow">
+        <img src="/public/assets/banners/1355163236.png" height="100" width="180" alt="" title="">
+    </a>
+</noindex>
+</div>
+        
+        <div class="side-market-promo">
+    <a href="http://megatyumen.ru/market/product/481">
+        <img class="first" src="/media/market_product/12/04/901/155xf/06fd76b57db84454db36aa21d2916c86.jpg" alt="" width="155">
+    </a>
+    <a class="title" href="http://megatyumen.ru/market/product/481">Наклейка интерьерная на виниловой пленке</a>
+    <div class="price">            50 <span class="rur">p</span>
+    </div>
+    <div class="top-left-corner"></div>
+    <a class="category" href="http://megatyumen.ru/market/53">Товары для творчества</a>
+</div>
+
+
+            </div>
+</div>
+	</div>
+	<noindex>
+	<div id="footer">
+
+
+		<div class="l">
+			<p>© 2013 Тюменский городской портал Megatyumen.ru</p>
+            <p>Телефон редакции: +7(3452) 688-925 <span id="footer-mt-email">E-mail: <a href="mailto:info@megatyumen.ru">info@megatyumen.ru</a></span></p>
+            <p>Телефон коммерческой службы: +7 (3452) 688-909</p>
+            <p>Портал «Мегатюмень.ру» реализован в содружестве с группой компаний «Мегаполис»</p>
+            <p class="links">
+                <a rel="nofollow" href="http://megatyumen.ru/about">О проекте</a>
+                <span class="separator">|</span>
+                <a rel="nofollow" href="http://megatyumen.ru/advertise">Размещение рекламы</a>
+                <span class="separator">|</span>
+                <a rel="nofollow" href="http://megatyumen.ru/rules">Правила</a>
+            </p>
+		</div>
+
+
+		<div class="r">
+			<div>
+                                
+
+                <!--Yandex counter-->
+                <div class="counter">
+	                <!-- Yandex.Metrika informer -->
+	                <a href="http://metrika.yandex.ru/stat/?id=4910770&amp;from=informer"
+	                   target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/4910770/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:4910770,type:0,lang:'ru'});return false}catch(e){}"/></a>
+	                <!-- /Yandex.Metrika informer -->
+
+	                <!-- Yandex.Metrika counter -->
+	                <script type="text/javascript">
+	                    (function (d, w, c) {
+	                        (w[c] = w[c] || []).push(function() {
+	                            try {
+	                                w.yaCounter4910770 = new Ya.Metrika({id:4910770,
+	                                    clickmap:true,
+	                                    trackLinks:true, webvisor:true});
+	                            } catch(e) { }
+	                        });
+
+	                        var n = d.getElementsByTagName("script")[0],
+	                                s = d.createElement("script"),
+	                                f = function () { n.parentNode.insertBefore(s, n); };
+	                        s.type = "text/javascript";
+	                        s.async = true;
+	                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+	                        if (w.opera == "[object Opera]") {
+	                            d.addEventListener("DOMContentLoaded", f);
+	                        } else { f(); }
+	                    })(document, window, "yandex_metrika_callbacks");
+	                </script>
+	                <noscript><div><img src="//mc.yandex.ru/watch/4910770" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	                <!-- /Yandex.Metrika counter -->
+                </div>
+                <!--/Yandex counter-->
+
+
+                <!--Uralweb counter-->
+                <div class="counter">
+	                <script language="JavaScript" type="text/javascript">
+	                    <!--
+	                    uralweb_d=document;
+	                    uralweb_a='';
+	                    uralweb_a+='&r='+escape(uralweb_d.referrer);
+	                    uralweb_js=10;
+	                    //-->
+	                </script>
+	                <script language="JavaScript1.1" type="text/javascript">
+	                    <!--
+	                    uralweb_a+='&j='+navigator.javaEnabled();
+	                    uralweb_js=11;
+	                    //-->
+	                </script>
+	                <script language="JavaScript1.2" type="text/javascript">
+	                    <!--
+	                    uralweb_s=screen;
+	                    uralweb_a+='&s='+uralweb_s.width+'*'+uralweb_s.height;
+	                    uralweb_a+='&d='+(uralweb_s.colorDepth?uralweb_s.colorDepth:uralweb_s.pixelDepth);
+	                    uralweb_js=12;
+	                    //-->
+	                </script>
+	                <script language="JavaScript1.3" type="text/javascript">
+	                    <!--
+	                    uralweb_js=13;
+	                    //-->
+	                </script>
+
+	                <script language="JavaScript" type="text/javascript">
+	                    <!--
+	                    uralweb_d.write('<a href="http://www.uralweb.ru/rating/go/megatyumen">'+
+	                            '<img border="0" src="http://hc.uralweb.ru/hc/megatyumen?js='+
+	                            uralweb_js+'&rand='+Math.random()+uralweb_a+
+	                            '" width="88" height="31" alt="Счетчик UralWeb" /><'+'/a>');
+	                    //-->
+	                </script>
+	                <noscript>
+	                    <a href="http://www.uralweb.ru/rating/go/megatyumen">
+	                        <img border="0" src="http://hc.uralweb.ru/hc/megatyumen?js=0" width="88" height="31" /></a>
+	                </noscript>
+                </div>
+                <!--/Uralweb counter-->
+
+                <!--LiveInternet counter-->
+                <div class="counter">
+                    <script type="text/javascript">
+                        <!--
+                        document.write("<a href='http://www.liveinternet.ru/click;megatyumen' "+
+                        "target=_blank><img src='//counter.yadro.ru/hit;megatyumen?t14.6;r"+
+                        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+                        ";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+                        "' alt='' title='LiveInternet: показано число просмотров за 24"+
+                        " часа, посетителей за 24 часа и за сегодня' "+
+                        "border='0' width='88' height='31'><\/a>")
+						//-->
+                    </script>
+                </div>
+                <!--/LiveInternet-->
+
+
+                <!-- begin of Top100 code -->
+                <div class="counter">
+                    <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?2842473"></script>
+                    <noscript>
+                        <a href="http://top100.rambler.ru/navi/2842473/">
+                            <img src="http://counter.rambler.ru/top100.cnt?2842473" alt="Rambler's Top100" border="0" />
+                        </a>
+
+                    </noscript>
+                </div>
+                <!-- end of Top100 code -->
+
+                
+                
+            </div>
+		</div>
+
+
+		<div class="copy">
+			<p>Мнения наших авторов, читателей, высказанные в публикациях, комментариях, могут не совпадать с позицией администрации портала и являются лишь личными мнениями людей, не связанных с порталом "Мегатюмень.ру" трудовыми или иными гражданско-правовыми отношениями. Информация на сайте предоставлена посетителями, администрация сайта не осуществляет проверку достоверности и ответственности за опубликованную информацию не несет.</p>
+		</div>
+	</div>
+	</noindex>
+</div>
+<script type="text/javascript" src="/static/js/vendor/orphus.min.js"></script>
+</body>
+</html>
