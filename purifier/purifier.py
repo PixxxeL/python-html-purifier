@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Based on native Python module HTMLParser purifier of HTML
 """
 
 from HTMLParser import HTMLParser
@@ -8,79 +9,102 @@ from HTMLParser import HTMLParser
 
 class HTMLPurifier(HTMLParser):
     """
-    Вырезает теги и атрибуты не в whitelist. Их содержимое - оставляет.
-    Формат whitelist:
+    Cuts the tags and attributes are not in the whitelist. Their content is leaves.
+    Signature of whitelist:
     {
-        'enabled tag name' : ['list of enabled attributes of tag']
+        'enabled tag name' : ['list of enabled tag's attributes']
     }
+    You can use the symbol '*' to allow all tags and/or attributes 
     """
     
     DEBUG = False
-    ENABLED = True
+    level = 0
+    isNotPurify = False
+        
+    def feed(self, data):
+        """
+        Main method for purifying HTML (overrided)
+        """
+        self.reset_purified()
+        HTMLParser.feed(self, data)
+        print self.html()
+    
+    def reset_purified(self):
+        """
+        Reset of inner purifying data
+        """
+        self.data = []
+    
+    def html(self):
+        """
+        Current representation of purifying data as unicode
+        """
+        return u''.join(self.data)
     
     def handle_starttag(self, tag, attrs):
         """
+        Handler of starting tag processing (overrided, private)
         """
         if self.DEBUG:
             print 'Encountered a start tag:', tag, attrs
         if tag in self.sanitizelist:
-            self.ENABLED = False
+            self.level += 1
             return
-        if tag in self.whitelist_keys:
+        if self.isNotPurify or tag in self.whitelist_keys:
             attrs = self.__attrs_str(tag, attrs)
             attrs = ' ' + attrs if attrs else ''
             self.data.append( u'<%s%s>' % (tag, attrs,) )
         
     def handle_endtag(self, tag):
         """
+        Handler of ending tag processing (overrided, private)
         """
         if self.DEBUG:
             print 'Encountered an end tag :', tag
         if tag in self.sanitizelist:
-            self.ENABLED = True
+            self.level -= 1
             return
-        if tag in self.whitelist_keys:
+        if self.isNotPurify or tag in self.whitelist_keys:
             self.data.append(u'</%s>' % tag)
         
     def handle_data(self, data):
         """
+        Handler of processing data inside tag (overrided, private)
         """
         if self.DEBUG:
             print 'Encountered some data  :', data
-        if self.ENABLED:
+        if not self.level:
             self.data.append(data)
-        
-    def feed(self, data):
-        """
-        """
-        HTMLParser.feed(self, data)
-        print self.html()
-        self.__reset()
-    
-    def html(self):
-        return ''.join(self.data)
         
     def __init__(self, whitelist=None):
         """
+        Build white list of tags and their attributes and reset purifying data
         """
         HTMLParser.__init__(self)
         self.__set_whitelist(whitelist)
-        self.__reset()
-    
-    def __reset(self):
-        """
-        """
-        self.data = []
+        self.reset_purified()
     
     def __set_whitelist(self, whitelist=None):
         """
+        Update default white list by customer white list
         """
+        # add tag's names as key and list of enabled attributes as value for defaults
         self.whitelist = {}
+        # tags that removed with contents
         self.sanitizelist = ['script', 'style']
+        if '*' in whitelist.keys():
+            self.isNotPurify = True
+            self.whitelist_keys = []
+            return
+        else:
+            self.isNotPurify = False
         self.whitelist.update(whitelist or {})
         self.whitelist_keys = self.whitelist.keys()
     
     def __attrs_str(self, tag, attrs):
+        """
+        Build string of attributes list for tag
+        """
         enabled = self.whitelist[tag]
         all = '*' in enabled
         items = []
@@ -90,27 +114,3 @@ class HTMLPurifier(HTMLParser):
             if all or key in enabled:
                 items.append( u'%s="%s"' % (key, value,) )
         return u' '.join(items)
-
-
-
-
-if __name__ == '__main__':
-    import time
-    
-    start_time = time.clock()
-    
-    def read_file(name):
-        return open(name).read()
-    whitelist = {
-        'p': ['attr-2'],
-        'div': ['*'],
-        'b': [],
-        'i': []
-    }
-    purifier = HTMLPurifier(whitelist)
-    #purifier.feed(read_file('../test-data/google.ru.html'))
-    #purifier.feed(read_file('../test-data/megatyumen.ru.catalogue.html'))
-    purifier.feed(read_file('../test-data/megatyumen.ru.html'))
-    #purifier.feed(read_file('../test-data/simple.html'))
-    
-    print time.clock() - start_time, 's'
