@@ -27,7 +27,7 @@ class HTMLPurifier(HTMLParser):
         """
         self.reset_purified()
         HTMLParser.feed(self, data)
-        print self.html()
+        return self.html()
     
     def reset_purified(self):
         """

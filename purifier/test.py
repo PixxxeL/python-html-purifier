@@ -3,28 +3,49 @@
 HTMLPurifier testing
 """
 
+import time
 from purifier import HTMLPurifier
 
+import bleach
 
+
+test_data_files = [
+    '../test-data/google.ru.html',
+    '../test-data/megatyumen.ru.catalogue.html',
+    '../test-data/megatyumen.ru.html',
+    '../test-data/simple.html',
+]
+
+HTMLPurifier_test_whitelist = {
+    'p': ['attr-2'],
+    'div': ['*'],
+    'b': [],
+    'i': []
+}
+
+bleach_test_whitelist = {
+    'tags'  : ['p', 'div', 'b', 'i'],
+    'attrs' : ['attr-2']
+}
+
+def read_file(name):
+    return open(name).read()
+
+def HTMLPurifier_test(index=3):
+    purifier = HTMLPurifier(HTMLPurifier_test_whitelist)
+    return purifier.feed(read_file(test_data_files[index]))
+
+def bleach_test(index=3):
+    return bleach.clean(
+        read_file(test_data_files[index]), 
+        tags = bleach_test_whitelist['tags'],
+        attributes = bleach_test_whitelist['attrs'],
+        strip = False
+    )
 
 if __name__ == '__main__':
-    # for the goals of developing and testing
-    import time
-    
     start_time = time.clock()
-    
-    def read_file(name):
-        return open(name).read()
-    test_whitelist = {
-        'p': ['attr-2'],
-        'div': ['*'],
-        'b': [],
-        'i': []
-    }
-    purifier = HTMLPurifier(test_whitelist)
-    #purifier.feed(read_file('../test-data/google.ru.html'))
-    #purifier.feed(read_file('../test-data/megatyumen.ru.catalogue.html'))
-    #purifier.feed(read_file('../test-data/megatyumen.ru.html'))
-    purifier.feed(read_file('../test-data/simple.html'))
-    
+    index = 0
+    #print HTMLPurifier_test(index)
+    print bleach_test(index)
     print time.clock() - start_time, 's'
