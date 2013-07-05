@@ -46,6 +46,6 @@ def bleach_test(index=3):
 if __name__ == '__main__':
     start_time = time.clock()
     index = 0
-    #print HTMLPurifier_test(index)
-    print bleach_test(index)
+    print HTMLPurifier_test(index)
+    #print bleach_test(index)
     print time.clock() - start_time, 's'
