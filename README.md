@@ -20,10 +20,17 @@ The module is based on
 Class - in the standard Python package. 
 No need to pull a dependence, what is also sometimes can be a plus.
 
-[In my blog](http://pixxxxxel.blogspot.ru/2013/07/html-purifier-python.html)
+[Part info in my blog](http://pixxxxxel.blogspot.ru/2013/07/html-purifier-python.html)
 
-Basic Use
----------
+[Package on PyPi](https://pypi.python.org/pypi/html-purifier/)
+
+Install
+-------
+
+```pip install html-purifier```
+
+Basic Usage
+-----------
 ```python
 >>> purifier = HTMLPurifier({
     'div': ['*'], # разрешает все атрибуты у тега div
@@ -33,3 +40,10 @@ Basic Use
 >>> print purifier.feed('<div class="e1" id="e1">Some <b>HTML</b> for <span attr-1="1" attr-2="2">purifying</span></div>')
 <div class="e1" id="e1">Some HTML for <span attr-2="2">purifying</span></div>
 ```
+
+Django Usage
+------------
+
+As usual in models and forms.
+Here is `purifier.models.PurifyedCharField`, `purifier.models.PurifyedTextField`
+for Django ORM and `purifier.forms.PurifyedCharField` for Django forms
