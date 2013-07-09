@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 HTMLPurifier testing
+This is not doc- or unit tests.
 """
 
 import time
