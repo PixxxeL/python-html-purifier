@@ -27,11 +27,14 @@ No need to pull a dependence, what is also sometimes can be a plus.
 Install
 -------
 
-```pip install html-purifier```
+```bash
+$ pip install html-purifier
+```
 
 Basic Usage
 -----------
 ```python
+>>> from purifier.purifier import HTMLPurifier
 >>> purifier = HTMLPurifier({
     'div': ['*'], # разрешает все атрибуты у тега div
     'span': ['attr-2'], # разрешает только атрибут attr-2 у тега span
