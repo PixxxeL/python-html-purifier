@@ -20,6 +20,7 @@ class HTMLPurifier(HTMLParser):
     DEBUG = False
     level = 0
     isNotPurify = False
+    removeEntity = False
         
     def feed(self, data):
         """
@@ -75,11 +76,21 @@ class HTMLPurifier(HTMLParser):
             print 'Encountered some data  :', data
         if not self.level:
             self.data.append(data)
+    
+    def handle_entityref(self, name):
+        """
+        Handler of processing entity (overrided, private)
+        """
+        if self.DEBUG:
+            print 'Encountered entity  :', name
+        if not self.removeEntity:
+            self.data.append('&%s;' % name)
         
-    def __init__(self, whitelist=None):
+    def __init__(self, whitelist=None, remove_entity=False):
         """
         Build white list of tags and their attributes and reset purifying data
         """
+        self.removeEntity = remove_entity
         HTMLParser.__init__(self)
         self.__set_whitelist(whitelist)
         self.reset_purified()

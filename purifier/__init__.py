@@ -13,5 +13,5 @@ Here is purifier.models.PurifyedCharField, purifier.models.PurifyedTextField
 for Django ORM and purifier.forms.PurifyedCharField for Django forms
 """
 
-VERSION = (0, 1, 3,)
-__version__ = '.'.join(str(d) for d in VERSION)
+VERSION = (0, 1, 4,)
+__version__ = '.'.join(map(str, VERSION))
