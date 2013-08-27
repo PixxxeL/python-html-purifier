@@ -23,6 +23,7 @@ HTMLPurifier_test_whitelist = {
     'div': ['*'],
     #'b': [],
     #'i': []
+    'br': []
 }
 
 bleach_test_whitelist = {

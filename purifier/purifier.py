@@ -21,6 +21,8 @@ class HTMLPurifier(HTMLParser):
     level = 0
     isNotPurify = False
     removeEntity = False
+    unclosedTags = ['br', 'hr']
+    isStrictHtml = False
         
     def feed(self, data):
         """
@@ -54,7 +56,8 @@ class HTMLPurifier(HTMLParser):
         if self.isNotPurify or tag in self.whitelist_keys:
             attrs = self.__attrs_str(tag, attrs)
             attrs = ' ' + attrs if attrs else ''
-            self.data.append( u'<%s%s>' % (tag, attrs,) )
+            tmpl = u'<%s%s />' if tag in self.unclosedTags and self.isStrictHtml else u'<%s%s>'
+            self.data.append( tmpl % (tag, attrs,) )
         
     def handle_endtag(self, tag):
         """
@@ -64,6 +67,8 @@ class HTMLPurifier(HTMLParser):
             print 'Encountered an end tag :', tag
         if tag in self.sanitizelist:
             self.level -= 1
+            return
+        if tag in self.unclosedTags:
             return
         if self.isNotPurify or tag in self.whitelist_keys:
             self.data.append(u'</%s>' % tag)
