@@ -34,8 +34,8 @@ bleach_test_whitelist = {
 def read_file(name):
     return open(name).read()
 
-def HTMLPurifier_test(index=3):
-    purifier = HTMLPurifier(HTMLPurifier_test_whitelist)
+def HTMLPurifier_test(index=3, whitelist=HTMLPurifier_test_whitelist):
+    purifier = HTMLPurifier(whitelist)
     return purifier.feed(read_file(test_data_files[index]))
 
 def bleach_test(index=3):
@@ -49,6 +49,6 @@ def bleach_test(index=3):
 if __name__ == '__main__':
     start_time = time.clock()
     index = 4
-    print HTMLPurifier_test(index)
+    print HTMLPurifier_test(index, whitelist=None)
     #print bleach_test(index)
     print time.clock() - start_time, 's'

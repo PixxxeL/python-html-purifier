@@ -108,7 +108,7 @@ class HTMLPurifier(HTMLParser):
         self.whitelist = {}
         # tags that removed with contents
         self.sanitizelist = ['script', 'style']
-        if '*' in whitelist.keys():
+        if isinstance(whitelist, dict) and '*' in whitelist.keys():
             self.isNotPurify = True
             self.whitelist_keys = []
             return
