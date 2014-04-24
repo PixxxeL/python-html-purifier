@@ -15,15 +15,17 @@ test_data_files = [
     '../test-data/megatyumen.ru.catalogue.html',
     '../test-data/megatyumen.ru.html',
     '../test-data/simple.html',
-    '../test-data/quoted_test.html'
+    '../test-data/quoted_test.html',
+    '../test-data/custom-1.html',
 ]
 
 HTMLPurifier_test_whitelist = {
     #'p': ['attr-2'],
-    'div': ['*'],
+    #'div': ['*'],
     #'b': [],
     #'i': []
-    'br': []
+    #'br': []
+    '*': ['*'],
 }
 
 bleach_test_whitelist = {
@@ -48,7 +50,8 @@ def bleach_test(index=3):
 
 if __name__ == '__main__':
     start_time = time.clock()
-    index = 4
-    print HTMLPurifier_test(index, whitelist=None)
+    index = 5
+    print HTMLPurifier_test(index)
+    #print HTMLPurifier_test(index, whitelist=None)
     #print bleach_test(index)
     print time.clock() - start_time, 's'
