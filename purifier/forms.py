@@ -19,5 +19,7 @@ class PurifyedCharField(forms.CharField):
 
     def clean(self, value):
         value = super(PurifyedCharField, self).clean(value)
-        purifier = HTMLPurifier(self._white_list)
-        return purifier.feed(value)
+        if value:
+            purifier = HTMLPurifier(self._white_list)
+            value = purifier.feed(value)
+        return value

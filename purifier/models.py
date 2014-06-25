@@ -21,8 +21,9 @@ class PurifyedCharField(models.CharField):
 
     def to_python(self, value):
         value = super(PurifyedCharField, self).to_python(value)
-        purifier = HTMLPurifier(self._white_list)
-        value = purifier.feed(value)
+        if value:
+            purifier = HTMLPurifier(self._white_list)
+            value = purifier.feed(value)
         return smart_unicode(value)
 
 
@@ -38,14 +39,16 @@ class PurifyedTextField(models.TextField):
 
     def to_python(self, value):
         value = super(PurifyedTextField, self).to_python(value)
-        purifier = HTMLPurifier(self._white_list)
-        value = purifier.feed(value)
+        if value:
+            purifier = HTMLPurifier(self._white_list)
+            value = purifier.feed(value)
         return smart_unicode(value)
 
     def get_prep_value(self, value):
         value = super(PurifyedTextField, self).get_prep_value(value)
-        purifier = HTMLPurifier(self._white_list)
-        value = purifier.feed(value)
+        if value:
+            purifier = HTMLPurifier(self._white_list)
+            value = purifier.feed(value)
         return value
 
 
