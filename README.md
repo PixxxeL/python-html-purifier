@@ -15,17 +15,17 @@ You can use the symbol ``*`` to allow all tags and/or attributes.
 
 Note that the ``script`` and ``style`` tags are removed with content.
 
-The module is based on 
+This module is based on 
 [HTMLParser](http://docs.python.org/2/library/htmlparser.html) 
 Class - in the standard Python package. 
-No need to pull a dependence, what is also sometimes can be a plus.
+There are no other dependencies, which can sometimes be a plus.
 
 [Part info in my blog](http://pixxxxxel.blogspot.ru/2013/07/html-purifier-python.html)
 
 [Package on PyPi](https://pypi.python.org/pypi/html-purifier/)
 
-Install
--------
+Installation
+------------
 
 ```bash
 $ pip install html-purifier
@@ -47,6 +47,6 @@ Basic Usage
 Django Usage
 ------------
 
-As usual in models and forms.
+As usual used in models and forms.
 Here is `purifier.models.PurifyedCharField`, `purifier.models.PurifyedTextField`
 for Django ORM and `purifier.forms.PurifyedCharField` for Django forms
