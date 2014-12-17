@@ -7,8 +7,13 @@ This is not doc- or unit tests.
 import time
 from purifier import HTMLPurifier
 
-import bleach
+try:
+    import bleach
+except ImportError:
+    bleach = None
 
+
+CODING = 'utf-8'
 
 test_data_files = [
     '../test-data/google.ru.html',
@@ -20,12 +25,12 @@ test_data_files = [
 ]
 
 HTMLPurifier_test_whitelist = {
-    #'p': ['attr-2'],
-    #'div': ['*'],
-    #'b': [],
-    #'i': []
+    'p': ['attr-2'],
+    'div': ['*'],
+    'b': [],
+    'i': []
     #'br': []
-    '*': ['*'],
+    #'*': ['*'],
 }
 
 bleach_test_whitelist = {
@@ -34,24 +39,26 @@ bleach_test_whitelist = {
 }
 
 def read_file(name):
-    return open(name).read()
+    return open(name, 'rb').read().decode(CODING)
 
 def HTMLPurifier_test(index=3, whitelist=HTMLPurifier_test_whitelist):
     purifier = HTMLPurifier(whitelist)
-    return purifier.feed(read_file(test_data_files[index]))
+    data = read_file(test_data_files[index])
+    return purifier.feed(data)
 
 def bleach_test(index=3):
-    return bleach.clean(
-        read_file(test_data_files[index]), 
-        tags = bleach_test_whitelist['tags'],
-        attributes = bleach_test_whitelist['attrs'],
-        strip = False
-    )
+    if bleach:
+        return bleach.clean(
+            read_file(test_data_files[index]), 
+            tags = bleach_test_whitelist['tags'],
+            attributes = bleach_test_whitelist['attrs'],
+            strip = False
+        )
 
 if __name__ == '__main__':
     start_time = time.clock()
-    index = 5
-    print HTMLPurifier_test(index)
+    index = 1
+    print( HTMLPurifier_test(index) )
     #print HTMLPurifier_test(index, whitelist=None)
     #print bleach_test(index)
-    print time.clock() - start_time, 's'
+    print( '{0} s'.format(time.clock() - start_time) )

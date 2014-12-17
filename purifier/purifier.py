@@ -3,8 +3,11 @@
 Based on native Python module HTMLParser purifier of HTML
 """
 
-from HTMLParser import HTMLParser
-
+import logging
+try:
+    from HTMLParser import HTMLParser
+except ImportError:
+    from html.parser import HTMLParser
 
 
 class HTMLPurifier(HTMLParser):
@@ -23,6 +26,7 @@ class HTMLPurifier(HTMLParser):
     removeEntity = False
     unclosedTags = ['br', 'hr']
     isStrictHtml = False
+    log = None
         
     def feed(self, data):
         """
@@ -48,8 +52,7 @@ class HTMLPurifier(HTMLParser):
         """
         Handler of starting tag processing (overrided, private)
         """
-        if self.DEBUG:
-            print 'Encountered a start tag:', tag, attrs
+        self.log.debug( u'Encountered a start tag: {0} {1}'.format(tag, attrs) )
         if tag in self.sanitizelist:
             self.level += 1
             return
@@ -63,8 +66,7 @@ class HTMLPurifier(HTMLParser):
         """
         Handler of ending tag processing (overrided, private)
         """
-        if self.DEBUG:
-            print 'Encountered an end tag :', tag
+        self.log.debug( u'Encountered an end tag : {0}'.format(tag) )
         if tag in self.sanitizelist:
             self.level -= 1
             return
@@ -77,8 +79,7 @@ class HTMLPurifier(HTMLParser):
         """
         Handler of processing data inside tag (overrided, private)
         """
-        if self.DEBUG:
-            print 'Encountered some data  :', data
+        self.log.debug( u'Encountered some data  : {0}'.format(data) )
         if not self.level:
             self.data.append(data)
     
@@ -86,8 +87,7 @@ class HTMLPurifier(HTMLParser):
         """
         Handler of processing entity (overrided, private)
         """
-        if self.DEBUG:
-            print 'Encountered entity  :', name
+        self.log.debug( u'Encountered entity  : {0}'.format(name) )
         if not self.removeEntity:
             self.data.append('&%s;' % name)
         
@@ -95,6 +95,8 @@ class HTMLPurifier(HTMLParser):
         """
         Build white list of tags and their attributes and reset purifying data
         """
+        if not self.log:
+            self.__set_log()
         self.removeEntity = remove_entity
         HTMLParser.__init__(self)
         self.__set_whitelist(whitelist)
@@ -130,3 +132,11 @@ class HTMLPurifier(HTMLParser):
             if all_attrs or key in enabled:
                 items.append( u'%s="%s"' % (key, value,) )
         return u' '.join(items)
+
+    def __set_log(self):
+        level = logging.DEBUG if self.DEBUG else logging.INFO
+        self.log = logging.getLogger('purifier.HTMLPurifier')
+        self.log.setLevel(level)
+        handler = logging.StreamHandler()
+        handler.setLevel(level)
+        self.log.addHandler(handler)
