@@ -1,5 +1,5 @@
 """
-Purified fields for Django forms
+Purified fields for Django forms.
 """
 
 from django import forms
