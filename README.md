@@ -7,9 +7,9 @@ About
 Cuts the tags and attributes from HTML that are not in the whitelist. 
 Their content is leaves. Signature of whitelist:
 ```python
-{
-    'enabled tag name' : ['list of enabled tag\'s attributes']
-}
+
+{'enabled tag name' : ['list of enabled tag\'s attributes']}
+
 ```
 You can use the symbol ``*`` to allow all tags and/or attributes.
 
