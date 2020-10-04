@@ -4,7 +4,7 @@ Python HTML purifier
 About
 -----
 
-Cuts the tags and attributes from HTML that are not in the whitelist. 
+Cuts the tags and attributes from HTML that are not on the whitelist. 
 Their content is leaves. Signature of whitelist:
 ```python
 
@@ -47,6 +47,6 @@ Basic Usage
 Django Usage
 ------------
 
-As usual used in models and forms.
+As  usually used in models and forms.
 Here is `purifier.models.PurifyedCharField`, `purifier.models.PurifyedTextField`
 for Django ORM and `purifier.forms.PurifyedCharField` for Django forms
