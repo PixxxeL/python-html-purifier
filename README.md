@@ -36,9 +36,9 @@ Basic Usage
 ```python
 >>> from purifier.purifier import HTMLPurifier
 >>> purifier = HTMLPurifier({
-    'div': ['*'], # разрешает все атрибуты у тега div
-    'span': ['attr-2'], # разрешает только атрибут attr-2 у тега span
-    # все остальные теги удаляются, но их содержимое остается
+    'div': ['*'], # разрешает все атрибуты у тега div - All attributes are allowed for div
+    'span': ['attr-2'], # разрешает только атрибут attr-2 у тега span - Only "attr-2" attribute is allowed for span elements
+    # все остальные теги удаляются, но их содержимое остается - All other tags and attributes are removed but their content is kept
 })
 >>> print purifier.feed('<div class="e1" id="e1">Some <b>HTML</b> for <span attr-1="1" attr-2="2">purifying</span></div>')
 <div class="e1" id="e1">Some HTML for <span attr-2="2">purifying</span></div>
