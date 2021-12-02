@@ -1,5 +1,0 @@
-#setup.py
-include LICENSE
-include README.md
-recursive-include purifier *.py
-recursive-include test-data *.html

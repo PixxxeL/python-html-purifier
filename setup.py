@@ -15,7 +15,7 @@ setup(
     author_email = 'ivan.n.sergeev@gmail.com',
     maintainer = 'pixel',
     maintainer_email = 'ivan.n.sergeev@gmail.com',
-    license = 'GPL3',
+    license = 'MIT',
     description = 'Cuts the tags and attributes from HTML that are not in the whitelist. Their content is left.',
     #long_description = markdowner.convert(long_description),
     download_url = 'https://github.com/PixxxeL/python-html-purifier/archive/master.zip',
